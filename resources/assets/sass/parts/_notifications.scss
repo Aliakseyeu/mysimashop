@@ -1,0 +1,7 @@
+.notifications {
+    background: $additional-color;
+    color: $base-color;
+    & ul {
+        @include vertical-paddings;
+    }
+}

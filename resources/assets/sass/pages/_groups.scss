@@ -1,0 +1,18 @@
+.groups {
+    .group {
+        margin-bottom: 2rem;
+        &__info {
+            font-size: $large-font-size;
+            font-weight: bold;
+        }
+        &__comment {
+            margin: $small-margin 0;
+        }
+        &__destroy {
+        margin-left: 5rem;
+    }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

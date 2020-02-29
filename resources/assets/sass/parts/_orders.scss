@@ -1,0 +1,90 @@
+.orders{
+    &__navigation{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        form{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            label{
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+.filters input{
+    margin: 0px 0.5rem;
+}
+
+.order {
+    width: 100%;
+    padding: 1rem 0rem;
+    & .row{
+        flex-wrap: nowrap;
+        & > div{
+            padding: 0rem 0.5rem;
+        }
+    }
+    
+    &__photo {
+        width: auto;
+    }
+    &__info, &__create {
+        transition: max-height 1s ease 0s;
+        overflow: hidden;
+    }
+    &__info, &__users {
+        width: 30%;
+    }
+    &__create {
+        width: 10%;
+        & button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+    &:nth-child(even) {
+        background: darken($base-color, 2%);
+    }
+    &__more {
+        width: 100%;
+        display: none;
+        padding: 0.5rem;
+        a {
+            margin: auto;
+        }
+        &_close {
+            display: none;
+        }
+    }
+    &__search {
+        padding: 5rem 0rem;
+    }
+}
+
+.item {
+    
+    &__name, &__price{
+        margin-bottom: 0.5rem;
+    }
+}
+
+.users {
+    &__actions {
+        margin-left: 0.5rem;
+    }
+    &__total {
+        margin-top: 1rem;
+    }
+}
+
+.group {
+    &__to-cart, &__to-archive {
+        margin-left: 1rem;
+    }
+    &__destroy {
+        margin-left: 5rem;
+    }
+}

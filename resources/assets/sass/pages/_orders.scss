@@ -1,0 +1,61 @@
+.order {
+    width: 100%;
+    padding: 1rem 0rem;
+    &__number {
+        width: 5%;
+        font-size: $large-font-size;
+        // font-family: $additional-font-family-two;
+    }
+    &__photo {
+        width: 15%
+    }
+    &__info, &__create {
+        transition: max-height 1s ease 0s;
+        overflow: hidden;
+    }
+    &__info {
+        width: 35%;
+    }
+    &__create, &__users {
+        padding-left: 1rem;
+    }
+    &__users {
+        width: 35%;
+    }
+    &__create {
+        width: 10%;
+        & button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+    &__more {
+        width: 100%;
+        display: none;
+        a {
+            margin: auto;
+        }
+        &_close {
+            display: none;
+        }
+    }
+    &__search {
+        padding: 5rem 0rem;
+    }
+}
+
+.item {
+    
+    &__name, &__price{
+        margin-bottom: 0.5rem;
+    }
+}
+
+.users {
+    &__actions {
+        margin-left: 0.5rem;
+    }
+    &__total {
+        margin-top: 1rem;
+    }
+}

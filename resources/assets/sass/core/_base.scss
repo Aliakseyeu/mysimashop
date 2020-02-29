@@ -1,0 +1,51 @@
+body {
+  font-family: $base-font-family;
+  line-height: 1.3;
+  // background: white;
+}
+
+ol, ul {
+  margin-left: 1rem;
+}
+
+ul.pagination {
+  li {
+    list-style: none;
+  }
+}
+
+li {
+    list-style: disc;
+    padding: 3px 0px;
+}
+
+a {
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+.btn-outline {
+   &-danger, &-success{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+}
+
+.content {
+  padding: 3rem 0rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+.content-title {
+  @include dark();
+  font-size: $largest-font-size;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 2rem 0rem;
+}

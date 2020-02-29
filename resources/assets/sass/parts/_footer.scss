@@ -1,0 +1,7 @@
+footer {
+    @include dark;
+    @include vertical-paddings;
+    a {
+        @include white-links;
+    }
+}

@@ -1,0 +1,169 @@
+// header {
+//   background-color: $additional-color;
+//   color: $base-color;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .header__top {
+//   &_main{
+//     padding: 2rem 0px;
+//   }
+// }
+
+// .logo {
+//   a {
+//     @include white-links;
+//     text-decoration: none;
+//   }
+//   &__main {
+//     font-family: $additional-font-family-one;
+//     font-size: $large-font-size;
+//     line-height: 1.2em;
+//     margin-bottom: 0.5rem;
+//     @include lines-left-right;
+//   }
+//   &__additional {
+//     @include words-border();
+//     font-family: $additional-font-family-two;
+//     margin-left: $additional-left-margin;
+//     font-weight: bold;
+//     font-size: $largest-font-size;
+//     margin-bottom: 0.5rem;
+//   }
+// }
+
+// .account {
+//   &__user {
+//     @include words-border();
+//     font-weight: bold;
+//     margin-bottom: 0.5rem;
+//   }
+
+//   &__menu {
+//     & ul li {
+//       list-style: none;
+//       display: inline-block;
+//       & a{
+//         @include white-links;
+//         margin: 0px 0.5rem;
+//         font-size: $small-font-size;
+//       }
+//     }
+//   }
+// }
+
+// .header__bottom {
+//   margin-bottom: 4rem;
+// }
+
+// .title {
+//   &__main {
+//     font-size: $largest-font-size;
+//     font-weight: 100;
+//     // font-family: $additional-font-family-two;
+//   }
+//   &__additional {
+//     margin-top: 1rem;
+//     margin-left: $additional-left-margin;
+//     font-style: italic;
+//   }
+//   &__buttons {
+//     a {
+//       margin-top: 1.5rem;
+//       padding-left: 3rem;
+//       padding-right: 3rem;
+//       margin-right: 3rem;
+//       text-transform: uppercase;
+//     }
+//     :last-child {
+//       margin-right: 0;
+//     }
+//   }
+// }
+
+header {
+  background: url('../img/header.jpg') no-repeat center;
+  background-size: cover;
+  height: 486px;
+  color: $base-color;
+}
+
+.header__top {
+  @include background;
+  &_main{
+    padding: 2rem 0px;
+  }
+}
+
+.logo {
+  a {
+    @include white-links;
+    text-decoration: none;
+  }
+  &__main {
+    font-family: $additional-font-family-one;
+    font-size: $large-font-size;
+    line-height: 1.2em;
+    margin-bottom: 0.5rem;
+    @include lines-left-right;
+  }
+  &__additional {
+    @include words-border();
+    font-family: $additional-font-family-two;
+    margin-left: $additional-left-margin;
+    font-weight: bold;
+    font-size: $largest-font-size;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.account {
+  &__user {
+    @include words-border();
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__menu {
+    & ul li {
+      list-style: none;
+      display: inline-block;
+      & a{
+        @include white-links;
+        margin: 0px 0.5rem;
+        font-size: $small-font-size;
+      }
+    }
+  }
+}
+
+.header__bottom {
+    padding-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.title {
+  &__main {
+    font-size: $largest-font-size;
+    font-weight: 100;
+    // font-family: $additional-font-family-two;
+  }
+  &__additional {
+    margin-top: 1rem;
+    margin-left: $additional-left-margin;
+    font-style: italic;
+  }
+  &__buttons {
+    a {
+      margin-top: 1.5rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      margin-right: 3rem;
+      text-transform: uppercase;
+    }
+    :last-child {
+      margin-right: 0;
+    }
+  }
+}
