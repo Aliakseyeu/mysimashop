@@ -10,6 +10,7 @@ class ItemRepository
 {
 
     protected $exception = true;
+    protected $items = false;
 
     public function __construct($exception = true){
         $this->exception = $exception;
@@ -17,17 +18,20 @@ class ItemRepository
 
     public function find(int $id): Item {
         $data = $this->getItemInfo($this->getItemUrl($id));
-        return $this->tryToGetItemInfo($data);
+        $items = $this->tryToGetItemInfo($data);
+        return $items->all()->first();
     }
 
     public function findAll(string $ids): Items {
+        $this->items = true;
         $data = $this->getItemInfo($this->getItemsUrl($ids));
         return $this->tryToGetItemInfo($data);
     }
 
     public function where(string $column, string $value): Item {
         $data = $this->getItemInfo($this->getByUrl($column, $value));
-        return $this->tryToGetItemInfo($data);
+        $items = $this->tryToGetItemInfo($data);
+        return $items->all()->first();
     }
 
     protected function getByUrl(string $key, string $value): string {
@@ -46,12 +50,14 @@ class ItemRepository
         return Curl::to($url)->withContentType('application/json')->asJson()->get();
     }
 
-    protected function tryToGetItemInfo($data) {
+    protected function tryToGetItemInfo($data): Items {
         try{
+            $items = new Items();
             if($data && !empty($data->id)){
-                return new Item($data); 
+                $items->add(new Item($data));
+                return $items;
             }
-            if(count($data->items) > 0){
+            if(count($data->items) > 1 || $this->items){
                 while(!empty($data->_links->next)){
                     $new = $this->getItemInfo($data->_links->next->href);
                     $new->items = array_merge($new->items, $data->items);
@@ -61,14 +67,16 @@ class ItemRepository
                 $items->addAll($data->items);
                 return $items;
             }
-            return new Item($data->items[0]);
+            $items->add(new Item($data->items[0]));
+            return $items;
         } catch (\Exception $e){
             if($this->exception){
                 throw new NotFoundException('item');
             }
             $item = new Item();
             $item->setError();
-            return $item;
+            $items->add($item);
+            return $items;
         }
     }
 

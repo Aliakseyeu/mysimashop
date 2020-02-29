@@ -34,6 +34,11 @@ class Deliveries {
         $this->deliveries = $deliveries;
     }
 
+    public function unset(string $key): void
+    {
+        $this->deliveries->forget($key);
+    }
+
     public function get(string $key): Delivery {
         return $this->deliveries->has($key) ? $this->deliveries->get($key) : new Delivery;
     }

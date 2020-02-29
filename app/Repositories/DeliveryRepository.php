@@ -20,8 +20,20 @@ class DeliveryRepository extends Repository
     public function getDeliveryPrices(array $data): Deliveries
     {
         $delivery = $this->sendDeliveryQuery($this->getDeliveryData($data));
+        $delivery = $this->addQtyToDelivery($delivery, $data);
         $deliveries = new Deliveries();
         $deliveries->addAll($delivery);
+        return $deliveries;
+    }
+
+    protected function addQtyToDelivery(object $deliveries, array $data): object
+    {
+        foreach ($data as $d){
+            if(empty($deliveries->{$d['sid']})){
+                continue;
+            }
+            $deliveries->{$d['sid']}->qty = $d['qty'];
+        }
         return $deliveries;
     }
     
@@ -45,7 +57,7 @@ class DeliveryRepository extends Repository
     }
 
     protected function getDeliveryPriceUrl(): string {
-        return config('api.url').'/delivery-calc/';
+        return config('api.url').'/delivery-calc/?expand=qty';
     }
 
     public function getDeliveryUser() {

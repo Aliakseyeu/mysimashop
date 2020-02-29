@@ -58,13 +58,12 @@ class GroupRefreshService extends GroupService
             if($order->item->update($order->item->getUpdateData($item))){
                 $result = true;
             }
-            
             if($order->users->count() <= 0){
                 continue;
             }
             foreach($order->users as $user){
                 $pivot = $user->pivot;
-                $delivery = $this->findDelivery($deliveries, $order->item->sid, $pivot->qty);
+                $delivery = $this->findDelivery($deliveries, $order->item->sid, $qty = $pivot->qty);
                 if(!$delivery){
                     continue;
                 }
@@ -85,13 +84,6 @@ class GroupRefreshService extends GroupService
         }
         $deliveries->set($temp);
         return $deliveries;
-    }
-    
-    protected function refreshDeliveries(Group $group, Deliveries $deliveries): bool
-    {
-        $result = false;
-        
-        
     }
     
     protected function getDeliveriesData(Group $group): array
@@ -136,14 +128,13 @@ class GroupRefreshService extends GroupService
     }
     
     protected function deliveriesReverse(array $data) {
-        array_unshift($data, null);
-        $data = call_user_func_array('array_map', $data);
-        $data = array_map('array_reverse', $data);
-        foreach ($data as &$d){
-            $d = array_filter($d);
+        $result = [];
+        foreach ($data as $okey => $order){
+            foreach ($order as $ukey => $user){
+                $result[$ukey][$okey] = $user;
+            }
         }
-        unset($d);
-        return $data;
+        return $result;
     }
     
     protected function findDelivery(Deliveries &$deliveries, int $sid, int $qty): ?Delivery{
