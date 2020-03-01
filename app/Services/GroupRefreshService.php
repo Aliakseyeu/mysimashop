@@ -137,10 +137,9 @@ class GroupRefreshService extends GroupService
         return $result;
     }
     
-    protected function findDelivery(Deliveries &$deliveries, int $sid, int $qty): ?Delivery{
+    protected function findDelivery(Deliveries $deliveries, int $sid, int $qty): ?Delivery{
         foreach($deliveries->all() as $key => $delivery){
             if($delivery->sid == $sid && $delivery->qty == $qty){
-                $deliveries->unset($key);
                 return $delivery;
             }
         }
