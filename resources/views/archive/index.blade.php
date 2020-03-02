@@ -5,7 +5,12 @@
 <section class="orders">
 
     <div class="container">
-        {{ $groups->links() }}
+        <div class="orders__navigation row">
+            <div class="">
+                {{ $groups->links() }}
+            </div>
+            @include('parts.filters')
+        </div>
     </div>
 
     @if($groups->count() <= 0)

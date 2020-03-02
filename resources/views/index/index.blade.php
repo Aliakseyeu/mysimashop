@@ -13,20 +13,14 @@
                 <div class="">
                     {{ $groups->links() }}
                 </div>
-                <form class="no-send filters">
-                    <label>Фильтры</label>
-                    <input class="form-control filters__name" placeholder="Название"></input>
-                    <input class="form-control filters__user" placeholder="Пользователь"></input>
-                </form>
+                @include('parts.filters')
             </div>
         </div>
 
         @if($groups->count() <= 0)
 
-            <div class="container">
-                <div class="alert alert-danger" role="alert">
-                    Групп нет
-                </div>
+            <div class="alert alert-danger" role="alert">
+                Групп нет
             </div>
 
         @else
