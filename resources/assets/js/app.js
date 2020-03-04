@@ -94,8 +94,10 @@ $(document).ready(function(){
         var input = $(this).val();
         $('.report__user-topay, .report__total-topay').each(function(i, e){
             var ru = $(e).find('.ru')[0];
-            if(ru != undefined){
+            if(ru != undefined && input != ''){
                 $($(ru).parent().find('.by')[0]).text(' или '+(input * parseInt($(ru).text())).toFixed(2) + ' BYN');
+            } else {
+                $('.by').text('');
             }
         })
     });
