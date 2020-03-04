@@ -1,0 +1,31 @@
+.report{
+    &__order{
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 0.5rem 0;
+    }
+    &__rate{
+        margin: 0.5rem 0;
+    }
+    &__item-name{
+        font-weight: bold;
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+    }
+    &__item-info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        div{
+            min-width: 80px;
+            padding: 0px 0.5rem;
+        }
+    }
+    &__user-topay{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+        flex-basis: auto;
+    }
+}
